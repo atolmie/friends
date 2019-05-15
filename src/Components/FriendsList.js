@@ -15,6 +15,7 @@ class FriendsList extends React.Component {
             .get("http://localhost:5000/friends")
             .then(res => {
                 console.log(res.data);
+                console.log('change');
                 this.setState({ freinds: res.data });
             })
             .catch(err => {
