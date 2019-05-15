@@ -19,4 +19,24 @@
   color: #61dafb;
 }
 
+.container {
+ 
+}
+
+.container h3 {
+  display: flex;
+  font-family: cursive;
+  font-size: 5em;
+  color: rgb(79, 79, 138);
+  justify-content:  center;
+  
+}
+
+.container button {
+  color: rgb(11, 48, 97);
+  font-family: 'Segoe UI';
+  font-size: 1em;
+  
+}
+
 

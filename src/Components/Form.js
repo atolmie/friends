@@ -19,14 +19,17 @@ class Form extends Component {
             }
         }
 
-
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleClearForm = this.handleClearForm.bind(this);
     }
 
     /* This life cycle hook gets executed when the component mounts */
 
-    handleFormSubmit() {
+    handleFormSubmit(e) {
+        console.warn(e.target.name.value);
+        console.warn(e.target.age.value);
+        console.warn(e.target.email.value);
+        e.preventDefault();
         // Form submission logic
     }
     handleClearForm() {
@@ -36,10 +39,11 @@ class Form extends Component {
         return (
             <form className="container" onSubmit={this.handleFormSubmit}>
 
-                <input /> {/* Name of the user */}
-                <input /> {/* Input for Age */}
+                <input type="text" name="name"/> {/* Name of the user */}
+                <input name="age"/> {/* Input for Age */}
+                <input name="email"/> {/* Input for Age */}
                 <button type="submit">Submit</button> { /*Submit */}
-                <button /> {/* Clear the form */}
+                <button type="clear">Clear</button> {/* Clear the form */}
             </form>
         );
     }

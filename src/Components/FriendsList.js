@@ -15,11 +15,9 @@ class FriendsList extends React.Component {
             .get("http://localhost:5000/friends")
             .then(res => {
                 console.log(res.data);
-                console.log('change');
                 this.setState({ freinds: res.data });
             })
             .catch(err => {
-                console.log(err);
                 this.setState({
                     message: "Data fetching failed!"
                 });
@@ -27,7 +25,21 @@ class FriendsList extends React.Component {
     }
 
     render() {
-        return null;
+        return (
+        <ul>
+        {this.state.friends.map(function (friends) {
+          return (
+            <li key={friends}>
+              <h1 className="name">{friends.name}</h1>
+              <h2 className="age">{friends.age}</h2>
+              <h2 className="email">{friends.email}</h2>
+              
+            </li>
+          )
+        }
+        )}
+      </ul>
+        );
     }
 }
 
