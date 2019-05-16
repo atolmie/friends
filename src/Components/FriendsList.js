@@ -15,7 +15,7 @@ class FriendsList extends React.Component {
             .get("http://localhost:5000/friends")
             .then(res => {
                 console.log(res.data);
-                this.setState({ freinds: res.data });
+                this.setState({ friends: res.data });
             })
             .catch(err => {
                 this.setState({
@@ -26,19 +26,18 @@ class FriendsList extends React.Component {
 
     render() {
         return (
-        <ul>
-        {this.state.friends.map(function (friends) {
-          return (
-            <li key={friends}>
-              <h1 className="name">{friends.name}</h1>
-              <h2 className="age">{friends.age}</h2>
-              <h2 className="email">{friends.email}</h2>
-              
-            </li>
-          )
-        }
-        )}
-      </ul>
+            <ul>
+                {this.state.friends.map(friend => {
+                    return (
+                        <li key={friend}>
+                            <h1 className="name">{friend.name}</h1>
+                            <h2 className="age">{friend.age}</h2>
+                            <h2 className="email">{friend.email}</h2>
+                        </li>
+                    )
+                }
+                )}
+            </ul>
         );
     }
 }

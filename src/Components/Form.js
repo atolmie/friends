@@ -40,8 +40,8 @@ class Form extends Component {
             <form className="container" onSubmit={this.handleFormSubmit}>
 
                 <input type="text" name="name"/> {/* Name of the user */}
-                <input name="age"/> {/* Input for Age */}
-                <input name="email"/> {/* Input for Age */}
+                <input name="age" age="age"/> {/* Input for Age */}
+                <input name="email" /> {/* Input for Age */}
                 <button type="submit">Submit</button> { /*Submit */}
                 <button type="clear">Clear</button> {/* Clear the form */}
             </form>
