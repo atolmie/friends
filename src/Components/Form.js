@@ -23,27 +23,38 @@ class Form extends Component {
         this.handleClearForm = this.handleClearForm.bind(this);
     }
 
+    setName = (e) => {
+        this.setState({ newFriend: { ...this.state.newFriend, name: e.target.value } });
+    }
+    setAge = (e) => {
+        this.setState({ newFriend: { ...this.state.newFriend, age: e.target.value } });
+    }
+    setEmail = (e) => {
+        this.setState({ newFriend: { ...this.state.newFriend, email: e.target.value } });
+    }
+
     /* This life cycle hook gets executed when the component mounts */
 
     handleFormSubmit(e) {
-        console.warn(e.target.name.value);
-        console.warn(e.target.age.value);
-        console.warn(e.target.email.value);
-        e.preventDefault();
+        console.warn(this.state.newFriend);
         // Form submission logic
+        e.preventDefault();
     }
-    handleClearForm() {
+    handleClearForm(e) {
+        this.setState({newFriend: {name: '', email: '', age: ''}});
         // Logic for resetting the form
+        e.preventDefault();
     }
     render() {
+        const { newFriend } = this.state;
         return (
             <form className="container" onSubmit={this.handleFormSubmit}>
 
-                <input type="text" name="name"/> {/* Name of the user */}
-                <input name="age" age="age"/> {/* Input for Age */}
-                <input name="email" /> {/* Input for Age */}
+                <input name="name" value={newFriend.name} onChange={this.setName} /> {/* Name of the user */}
+                <input name="age" value={newFriend.age} onChange={this.setAge} /> {/* Input for Age */}
+                <input name="email" value={newFriend.email} onChange={this.setEmail}/> {/* Input for Email */}
                 <button type="submit">Submit</button> { /*Submit */}
-                <button type="clear">Clear</button> {/* Clear the form */}
+                <button type="clear" onClick={this.handleClearForm}>Clear</button> {/* Clear the form */}
             </form>
         );
     }
