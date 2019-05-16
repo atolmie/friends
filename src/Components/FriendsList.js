@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios";
+import Form from "./Form";
 
 class FriendsList extends React.Component {
     constructor() {
@@ -11,6 +12,11 @@ class FriendsList extends React.Component {
     }
 
     componentDidMount() {
+        this.fetchFriends()
+        
+    }
+
+    fetchFriends = () => {
         axios
             .get("http://localhost:5000/friends")
             .then(res => {
@@ -22,14 +28,17 @@ class FriendsList extends React.Component {
                     message: "Data fetching failed!"
                 });
             });
+
     }
 
     render() {
         return (
+            <div>
+                <Form refreshData={this.fetchFriends} />
             <ul>
                 {this.state.friends.map(friend => {
                     return (
-                        <li key={friend}>
+                        <li key={friend.id}>
                             <h1 className="name">{friend.name}</h1>
                             <h2 className="age">{friend.age}</h2>
                             <h2 className="email">{friend.email}</h2>
@@ -38,6 +47,7 @@ class FriendsList extends React.Component {
                 }
                 )}
             </ul>
+            </div>
         );
     }
 }

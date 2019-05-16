@@ -6,6 +6,7 @@ import Input from '../Components/Input';
 // import TextArea from '../components/TextArea';
 // import Select from '../components/Select';
 // import Button from '../components/Button'
+import axios from 'axios';
 
 class Form extends Component {
     constructor(props) {
@@ -33,11 +34,20 @@ class Form extends Component {
         this.setState({ newFriend: { ...this.state.newFriend, email: e.target.value } });
     }
 
+    
+
     /* This life cycle hook gets executed when the component mounts */
 
     handleFormSubmit(e) {
-        console.warn(this.state.newFriend);
         // Form submission logic
+        axios.post('http://localhost:5000/friends', this.state.newFriend)
+        .then(res => {
+            this.props.refreshData()
+            console.log(res)
+        }) 
+        .catch(err => {
+            console.log(err)
+        })
         e.preventDefault();
     }
     handleClearForm(e) {
